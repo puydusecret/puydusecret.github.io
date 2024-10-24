@@ -26,9 +26,10 @@
             width: 100%;
             height: 100%;
             border: none;
+            display: none; /* Masque l'iframe par défaut */
         }
         .error-message {
-            display: none;
+            display: flex; /* Affiche le message d'erreur par défaut */
             position: absolute;
             top: 0;
             left: 0;
@@ -38,18 +39,28 @@
             color: white;
             justify-content: center;
             align-items: center;
-            display: flex;
             font-size: 1.5em;
         }
     </style>
 </head>
 <body>
 
+<header>
+    <h1>Puy Du Secret</h1>
+    <p>Formulaire D'inscription au staff</p>
+</header>
 
 <div id="iframe-container">
-    <iframe src="https://sites.google.com/view/puydusecret-recrutement/accueil" title="Recrutement | Puy DU Secret Officiel" onload="this.style.display='block'; document.getElementById('error-message').style.display='none';" onerror="this.style.display='none'; document.getElementById('error-message').style.display='flex';"></iframe>
+    <iframe src="https://sites.google.com/view/puydusecret-recrutement/accueil" 
+            title="Recrutement | Puy Du Secret Officiel" 
+            onload="this.style.display='block'; document.getElementById('error-message').style.display='none';" 
+            onerror="document.getElementById('error-message').innerText='Erreur : Impossible d\'afficher le contenu. Veuillez réessayer plus tard.'; this.style.display='none';"></iframe>
     <div id="error-message" class="error-message">
-        <p>Erreur : Impossible d'afficher le contenu de ce site. Veuillez vérifier les restrictions.</p>
+        <p>Chargement en cours...</p> <!-- Message par défaut -->
     </div>
 </div>
+
+</body>
+</html>
+
 
